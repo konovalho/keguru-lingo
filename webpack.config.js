@@ -24,7 +24,7 @@ module.exports = (env, argv = { mode: 'development' }) => {
 
     output: {
       path: path.resolve(__dirname, 'build'),
-      publicPath: '/',
+      publicPath: '',
       filename: isProduction ? '[name].js' : '[name].[contenthash].js',
       chunkFilename: isProduction
         ? '[name].chunk.js'
