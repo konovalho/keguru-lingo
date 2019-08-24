@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import useEventListener from './useEventListener';
 
-export default function useOutsideClick(handler, condition, notNeedClick) {
+export default function useOutsideClick(handler, condition) {
   const ref = useRef();
   const savedHandler = useRef();
 
@@ -13,10 +13,7 @@ export default function useOutsideClick(handler, condition, notNeedClick) {
     }
   };
 
-  useEventListener('scroll', outsideClick);
-  if (!notNeedClick) {
-    useEventListener('mousedown', outsideClick);
-  }
+  useEventListener('mousedown', outsideClick);
 
   useEffect(() => {
     savedHandler.current = handler;

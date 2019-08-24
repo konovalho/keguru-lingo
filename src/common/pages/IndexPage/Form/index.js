@@ -15,9 +15,15 @@ const Form = ({ handleSubmit }) => {
     setTranslateValue(evt.target.value);
   };
 
+  const resetForm = () => {
+    setWordValue('');
+    setTranslateValue('');
+  };
+
   const onSubmit = (evt) => {
     evt.preventDefault();
     handleSubmit({ word: wordValue, translate: translateValue });
+    resetForm();
   };
 
   return (
