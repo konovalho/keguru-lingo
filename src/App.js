@@ -36,7 +36,7 @@ class App extends React.Component {
     return (
       <Provider {...stores}>
         <Context.Provider value={this.state}>
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <Route
               render={({ location }) => (
                 <ScrollToTop

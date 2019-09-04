@@ -2,14 +2,16 @@
   "name": "super.ru",
   "version": "0.1.1",
   "description": "Super.ru front-end",
-  "repository": "http://tabolabs.com:1111/dev/super",
+  "homepage": "https://artemiusl.github.io/keguru-lingo/",
+  "repository": "https://github.com/ArtemiusL/keguru-lingo",
   "main": "index.js",
   "scripts": {
     "start": "BUNDLE_API_ROOT=https://test-env.super.ru/v1 webpack-dev-server --mode development",
     "build": "BUNDLE_API_ROOT=/v1 webpack --mode production",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook:build": "build-storybook -s .storybook",
-    "prettier": "prettier --write src/**/*.js"
+    "prettier": "prettier --write src/**/*.js",
+    "deploy": "gh-pages -d build"
   },
   "husky": {
     "hooks": {
@@ -40,6 +42,7 @@
     "core-js": "^2.6.5",
     "custom-event-polyfill": "^1.0.7",
     "express": "^4.17.1",
+    "gh-pages": "^2.1.1",
     "intersection-observer": "^0.7.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
