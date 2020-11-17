@@ -218,7 +218,10 @@ module.exports = (env, argv = { mode: 'development' }) => {
     devtool: sourceMap && 'source-map',
     devServer: {
       host: '0.0.0.0',
-      port: 3000,
+      port: 3300,
+      proxy: {
+        '/api': 'http://localhost:3000'
+      },
       contentBase: path.resolve(process.cwd(), 'build'),
       compress: true,
       historyApiFallback: true,

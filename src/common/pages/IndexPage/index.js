@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import logo from '@assets/logo.jpg';
 import Form from './Form';
 import ControlBar from './ControlBar';
 import Table from './Table';
+import { inject, observer } from 'mobx-react';
 
 import styles from './styles.styl';
 
-const IndexPage = () => {
+const IndexPage = inject('PostsStore')(observer(({ PostsStore }) => {
+  const { fetchPosts, posts } = PostsStore
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
   const initalState = JSON.parse(localStorage.getItem('list')) || [];
 
   const [showTranslate, setShowTranslate] = useState(true);
@@ -64,7 +70,7 @@ const IndexPage = () => {
           toggleIsCheck={toggleIsCheck}
         />
         <Table
-          list={list}
+          list={posts}
           showTranslate={showTranslate}
           addValueForCheck={addValueForCheck}
           isCheck={isCheck}
@@ -73,6 +79,6 @@ const IndexPage = () => {
       </div>
     </div>
   );
-};
+}))
 
 export default IndexPage;

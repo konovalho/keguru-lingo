@@ -62,7 +62,7 @@ const Table = ({
 Table.propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       word: PropTypes.string,
       translate: PropTypes.string,
     }),
