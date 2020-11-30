@@ -9,16 +9,17 @@ import { inject, observer } from 'mobx-react';
 import styles from './styles.styl';
 
 const IndexPage = inject('PostsStore')(observer(({ PostsStore }) => {
-  const { fetchPosts, posts } = PostsStore
+  const { fetchPosts, posts, createPost, deletePost, createPosts } = PostsStore
 
   useEffect(() => {
     fetchPosts()
   }, [])
   const initalState = JSON.parse(localStorage.getItem('list')) || [];
 
-  const [showTranslate, setShowTranslate] = useState(true);
+  const [showTranslate, setShowTranslate] = useState(false);
   const [list, setList] = useState(initalState);
   const [listChecked, setListChekced] = useState([]);
+  const [alotInput, alotInputChange] = useState('');
 
   const [isCheck, setIsCheck] = useState(false);
 
@@ -43,19 +44,31 @@ const IndexPage = inject('PostsStore')(observer(({ PostsStore }) => {
   };
 
   const handleSubmit = (evt) => {
-    const isId = list.length > 0;
-    const id = isId ? list[list.length - 1].id + 1 : 1;
+    console.log('handleSubmit', evt);
+    // const isId = list.length > 0;
+    // const id = isId ? list[list.length - 1].id + 1 : 1;
 
-    const newValue = [
-      ...list,
-      {
-        ...evt,
-        id,
-      },
-    ];
-    setList(newValue);
-    localStorage.setItem('list', JSON.stringify(newValue));
+    // const newValue = [
+    //   ...list,
+    //   {
+    //     ...evt,
+    //     id,
+    //   },
+    // ];
+    // setList(newValue);
+    // localStorage.setItem('list', JSON.stringify(newValue));
+    createPost(evt)
   };
+
+  const handleAlot = (evt) => {
+    evt.preventDefault();
+    // console.log('alotInput', alotInput);
+    createPosts(alotInput)
+  };
+
+  const handleAlotChange = (evt) => {
+    alotInputChange(evt.target.value)
+  }
 
   return (
     <div className={styles.root}>
@@ -64,6 +77,22 @@ const IndexPage = inject('PostsStore')(observer(({ PostsStore }) => {
         <img className={styles.logo} src={logo} width="20%" alt="logo" />
         <h2 className={styles.desc}>Приложение для обучения английских слов</h2>
         <Form handleSubmit={handleSubmit} />
+        <form className={styles.root} onSubmit={handleAlot}>
+          <div className={styles.fieldWrap}>
+            <label htmlFor="inpWords">
+              Слова много сразу
+              <input
+                type="text"
+                name="words"
+                id="inpWords"
+                value={alotInput}
+                onChange={handleAlotChange}
+              />
+            </label>
+          </div>
+          <button type="submit">Добавить много слов</button>
+        </form>
+
         <ControlBar
           changeShowTranslate={changeShowTranslate}
           showTranslate={showTranslate}
@@ -75,6 +104,7 @@ const IndexPage = inject('PostsStore')(observer(({ PostsStore }) => {
           addValueForCheck={addValueForCheck}
           isCheck={isCheck}
           listChecked={listChecked}
+          deletePost={deletePost}
         />
       </div>
     </div>

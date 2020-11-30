@@ -12,6 +12,7 @@ const Table = ({
   addValueForCheck,
   isCheck,
   listChecked,
+  deletePost,
 }) => {
   const [editId, setEditId] = useState(0);
 
@@ -44,15 +45,18 @@ const Table = ({
               <CheckInput id={item.id} handleBlur={addValueForCheck} />
             )}
           </div>
+          <div className={styles.checkField}>
           {isCheck && (
-            <div className="checkField">
-              {listChecked.find((listItem) => listItem.id === item.id) &&
+              listChecked.find((listItem) => listItem.id === item.id) &&
               item.translate ===
                 listChecked.find((listItem) => listItem.id === item.id).value
                 ? 'правильно'
-                : 'нет'}
-            </div>
+                : 'нет'
           )}
+          </div>
+          <div onClick={() => {
+            deletePost(item.id)
+          }} className={styles.delete}>Удалить</div>
         </li>
       ))}
     </ul>
@@ -76,6 +80,7 @@ Table.propTypes = {
   showTranslate: PropTypes.bool.isRequired,
   addValueForCheck: PropTypes.func.isRequired,
   isCheck: PropTypes.bool.isRequired,
+  deletePost: PropTypes.func.isRequired,
 };
 
 export default Table;
