@@ -6,6 +6,7 @@ import P from 'prop-types';
 
 import { Provider } from 'mobx-react';
 import IndexPage from '@pages/IndexPage';
+import LoginPage from '@pages/LoginPage';
 import stores from '@stores';
 
 import Context from './AppContext';
@@ -45,9 +46,15 @@ class App extends React.Component {
                 >
                   <CommonLayout
                     exact
-                    name="Test"
+                    name="Main"
                     path="/"
                     component={IndexPage}
+                  />
+                  <CommonLayout
+                    exact
+                    name="Login"
+                    path="/login"
+                    component={LoginPage}
                   />
                 </ScrollToTop>
               )}
@@ -73,7 +80,7 @@ function CommonLayout({ component: ChildComponent, ...props }) {
 }
 
 CommonLayout.propTypes = {
-  component: P.oneOfType([P.element, P.func]).isRequired,
+  component: P.oneOfType([P.element, P.func, P.node, P.object]).isRequired,
 };
 
 export default App;

@@ -52,14 +52,27 @@ const routes = () => {
 
   return async (ctx, next) => {
     const url = ctx.request.url
+    console.log('url', url);
     if (url === '/api/create/alot' && ctx.request.method === 'POST') {
       const arrs = alotWrodsPipeline(ctx.request.body.words)
       const posts = await arrs.forEach(item => addWordToDb(item));
       // const post = await addWordToDb(ctx.request.body)
       ctx.body = posts
       ctx.status = 200
-    }
-    if (url === '/api/create' && ctx.request.method === 'POST') {
+    } else if (url === '/api/secret') {
+      if (ctx.session.isAuth) {
+        ctx.body = 'Можете войти'
+        ctx.status = 200
+      } else {
+        ctx.body = 'Убирайтесь'
+        ctx.status = 400
+      }
+    } else if (url === '/api/login') {
+      if (ctx.request.body.password === '123') {
+        ctx.session.isAuth = true
+        ctx.status = 200
+      } 
+    } else if (url === '/api/create' && ctx.request.method === 'POST') {
       const post = await addWordToDb(ctx.request.body)
       ctx.body = post
       ctx.status = 200

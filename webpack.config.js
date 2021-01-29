@@ -49,15 +49,14 @@ module.exports = (env, argv = { mode: 'development' }) => {
         '@assets': path.resolve(process.cwd(), 'src/assets'),
         '@styles': path.resolve(process.cwd(), 'src/common/stylesheets'),
       },
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
     },
     module: {
       rules: [
         {
-          test: /\.js$/,
-          // exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-          },
+          test: /\.(jsx|js)$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
         },
         {
           test: /\.styl$/,

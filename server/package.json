@@ -15,6 +15,7 @@
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-cors": "^0.0.16",
+    "koa-session": "^6.1.0",
     "mongoose": "^5.10.15",
     "nodemon": "^2.0.6"
   }

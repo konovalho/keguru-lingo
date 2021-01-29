@@ -6,7 +6,7 @@ import CommonLayout from '@layouts/CommonLayout';
 import styles from './index.styl';
 
 
-class AppLayout extends React.Component {
+class AppLayout extends React.PureComponent {
 
   render() {
     const {
