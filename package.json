@@ -127,7 +127,7 @@
     "prettier": "^1.16.4",
     "resolve-url-loader": "^3.0.0",
     "storybook-addon-jsx": "^6.0.0",
-    "storybook-react-router": "^1.0.2",
+    "storybook-react-router": "^1.0.8",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
