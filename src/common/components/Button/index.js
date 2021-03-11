@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import styles from './index.styl';
-console.log('hi');
+console.log('hi button');
 
 const Button = ({ className, children, onClick, tabIndex }) => (
   <button
