@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Words = ({ handleSubmit }) => {
+const Words = ({ posts }) => {
   const classes = useStyles();
 
   return (
@@ -62,8 +62,8 @@ const Words = ({ handleSubmit }) => {
           <AddIcon color="primary" fontSize="large" />
         </Button>
       </Grid>
-      {wordsContent.map(item => (
-        <div className={classes.wordWrapper}>
+      {posts.map(item => (
+        <div key={item.id} className={classes.wordWrapper}>
           <div className={classes.textWrapper}>
             <Typography className={classes.word} variant="h6" component="h6" fontWeight="bold">{item.word}</Typography>
             <div className="translate">{item.translate}</div>

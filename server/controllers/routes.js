@@ -77,6 +77,7 @@ const routes = () => {
       ctx.body = post
       ctx.status = 200
     } else if (url === '/api/posts') {
+      console.log('зашел в if posts');
       const posts = await Word.find().sort({ createdDate: -1 });
       ctx.body = posts;
     } else if (url === '/api/word' && ctx.request.method === 'DELETE') {

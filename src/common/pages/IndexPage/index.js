@@ -24,6 +24,12 @@ import styles from './styles.styl';
 
 const IndexPage = inject('PostsStore')(observer(({ PostsStore }) => {
 
+  const { fetchPosts, posts, createPost, deletePost, createPosts } = PostsStore
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
+
   const classes = useStyles();
 
   return (
@@ -34,7 +40,7 @@ const IndexPage = inject('PostsStore')(observer(({ PostsStore }) => {
             <Profile />
           </Grid>
           <Grid item xs={9}>
-            <Words />
+            <Words posts={posts} />
           </Grid>
         </Grid>
       </Container>
