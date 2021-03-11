@@ -6,7 +6,7 @@ import moment from 'moment';
 import 'moment/locale/ru';
 
 import '@styles/reset.css';
-import 'fontsource-roboto';
+import '@styles/global';
 // import route
 import App from './App';
 
