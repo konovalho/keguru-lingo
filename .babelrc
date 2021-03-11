@@ -9,7 +9,8 @@
         }
       }
     ],
-    "@babel/preset-react"
+    "@babel/preset-react",
+    "@linaria"
   ],
   "plugins": [
     "@babel/plugin-transform-block-scoping",

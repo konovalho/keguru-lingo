@@ -55,14 +55,21 @@ module.exports = (env, argv = { mode: 'development' }) => {
         {
           test: /\.(jsx|js)$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
+          use: [
+            { loader: 'babel-loader' },
+            {
+              loader: '@linaria/webpack-loader',
+              options: {
+                sourceMap: !isProduction,
+              },
+            }
+          ],
         },
         {
-          test: /\.styl$/,
-          exclude: /node_modules/,
+          test: /\.css$/,
           use: [
             {
-              loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader,
               options: {
                 hrm: !isProduction,
               },
@@ -70,9 +77,7 @@ module.exports = (env, argv = { mode: 'development' }) => {
             {
               loader: 'css-loader',
               options: {
-                modules: true,
-                localIdentName,
-                sourceMap,
+                sourceMap: !isProduction,
               },
             },
             {
@@ -80,15 +85,8 @@ module.exports = (env, argv = { mode: 'development' }) => {
             },
             {
               loader: 'resolve-url-loader',
-            },
-            {
-              loader: 'stylus-loader',
-            },
+            }
           ],
-        },
-        {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|jpg|gif)|(\.image.svg$)$/,

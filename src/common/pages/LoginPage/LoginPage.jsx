@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Field } from 'react-final-form'
+// import { Form, Field } from 'react-final-form'
 
-import styles from './styles.styl'
+// import styles from './styles.styl'
 
 const LoginPage = () => {
   const onSubmit = (evt) => {
@@ -9,8 +9,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <h1 className={styles.title}>
+    <div>
+      Login page
+      {/* <h1 className={styles.title}>
         LoginPage
       </h1>
       <Form
@@ -28,7 +29,7 @@ const LoginPage = () => {
             <button type="submit">Submit</button>
           </form>
         )}
-      />
+      /> */}
     </div>
   )
 }

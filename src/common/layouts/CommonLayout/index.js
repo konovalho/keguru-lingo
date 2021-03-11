@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Header from '@components/Header'
 
-import './styles.styl';
+// import './styles.styl';
 
 
 const useStyles = makeStyles({
@@ -17,7 +17,8 @@ const useStyles = makeStyles({
 const CommonLayout = ({ children }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    // className={classes.root}
+    <div>
       <Header />
       {children}
     </div>
