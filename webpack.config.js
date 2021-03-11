@@ -34,7 +34,6 @@ module.exports = (env, argv = { mode: 'development' }) => {
       alias: {
         '@context': path.resolve(process.cwd(), 'src/AppContext.js'),
         '@stores': path.resolve(process.cwd(), 'src/common/stores'),
-
         '@components': path.resolve(process.cwd(), 'src/common/components'),
         '@blocks': path.resolve(process.cwd(), 'src/common/blocks'),
         '@constants': path.resolve(process.cwd(), 'src/common/constants'),

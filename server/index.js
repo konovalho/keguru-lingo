@@ -18,7 +18,7 @@ const config = require('./lib/config')
 
 
 app.use(bodyParser())
-app.use(session(app))
+// app.use(session(app))
 
 mongooseConfig()
 db()
